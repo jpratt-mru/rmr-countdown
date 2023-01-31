@@ -1,75 +1,78 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-	<meta charset="UTF-8" />
-	<title>RMR Countdown</title>
-	<link rel="stylesheet" type="text/css" href="style/main.css" />
-	<script type="text/javascript" src="js/jquery-1.4.1.js"></script>
-	<script type="text/javascript" src="js/jquery.lwtCountdown-0.9.5.js"></script>
-	<script type="text/javascript" src="js/misc.js"></script>
-</head>
-<body>
-   <div id="container">
-		<h1>Rocky Mountain Game Retreat <span class="foo">2023</span> Countdown</h1>
-		<h2 class="subtitle">Are you packing a chair? Because apparently that's a thing.</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <title>RMR Countdown</title>
+    <link rel="stylesheet" type="text/css" href="style/main.css" />
+    <script type="text/javascript" src="js/jquery-1.4.1.js"></script>
+    <script
+      type="text/javascript"
+      src="js/jquery.lwtCountdown-0.9.5.js"
+    ></script>
+    <script type="text/javascript" src="js/misc.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <h1>
+        Rocky Mountain Game Retreat <span class="foo">2023</span> Countdown
+      </h1>
+      <h2 class="subtitle">
+        Are you packing a chair? Because apparently that's a thing.
+      </h2>
 
-		<!-- Countdown dashboard start -->
-		<div id="countdown_dashboard">
-			<div class="dash weeks_dash">
-				<span class="dash_title">weeks</span>
-				<div class="digit">0</div>
-				<div class="digit">0</div>
-			</div>
+      <!-- Countdown dashboard start -->
+      <div id="countdown_dashboard">
+        <div class="dash weeks_dash">
+          <span class="dash_title">weeks</span>
+          <div class="digit">0</div>
+          <div class="digit">0</div>
+        </div>
 
-			<div class="dash days_dash">
-				<span class="dash_title">days</span>
-				<div class="digit">0</div>
-				<div class="digit">0</div>
-			</div>
+        <div class="dash days_dash">
+          <span class="dash_title">days</span>
+          <div class="digit">0</div>
+          <div class="digit">0</div>
+        </div>
 
-			<div class="dash hours_dash">
-				<span class="dash_title">hours</span>
-				<div class="digit">0</div>
-				<div class="digit">0</div>
-			</div>
+        <div class="dash hours_dash">
+          <span class="dash_title">hours</span>
+          <div class="digit">0</div>
+          <div class="digit">0</div>
+        </div>
 
-			<div class="dash minutes_dash">
-				<span class="dash_title">minutes</span>
-				<div class="digit">0</div>
-				<div class="digit">0</div>
-			</div>
+        <div class="dash minutes_dash">
+          <span class="dash_title">minutes</span>
+          <div class="digit">0</div>
+          <div class="digit">0</div>
+        </div>
 
-			<div class="dash seconds_dash">
-				<span class="dash_title">seconds</span>
-				<div class="digit">0</div>
-				<div class="digit">0</div>
-			</div>
+        <div class="dash seconds_dash">
+          <span class="dash_title">seconds</span>
+          <div class="digit">0</div>
+          <div class="digit">0</div>
+        </div>
+      </div>
+      <!-- Countdown dashboard end -->
 
-		</div>
-		<!-- Countdown dashboard end -->
+      <div class="dev_comment">
+        I'm not giddy yet.<br />But I <em>am</em> giddy adjacent.
+      </div>
 
-		<div class="dev_comment">
-		  Are we turning a corner?<br/>It feels like we're turning a corner...
-		</div>
-
-		<script language="javascript" type="text/javascript">
-			jQuery(document).ready(function() {
-				$('#countdown_dashboard').countDown({
-					targetDate: {
-						'day': 		30,
-						'month': 	3,
-						'year': 	2023,
-						'hour': 	13,
-						'min': 		0,
-						'sec': 		0
-					}
-				});
-
-
-			});
-		</script>
-
-	</div>
-</body>
+      <script language="javascript" type="text/javascript">
+        jQuery(document).ready(function () {
+          $("#countdown_dashboard").countDown({
+            targetDate: {
+              day: 30,
+              month: 3,
+              year: 2023,
+              hour: 13,
+              min: 0,
+              sec: 0,
+            },
+          });
+        });
+      </script>
+    </div>
+  </body>
 </html>
