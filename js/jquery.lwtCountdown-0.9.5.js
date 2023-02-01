@@ -60,9 +60,9 @@
 
 		if (options.targetDate)
 		{
-			targetTime.setDate(options.targetDate.day);
-			targetTime.setMonth(options.targetDate.month-1);
 			targetTime.setFullYear(options.targetDate.year);
+			targetTime.setMonth(options.targetDate.month-1);
+			targetTime.setDate(options.targetDate.day);
 			targetTime.setHours(options.targetDate.hour);
 			targetTime.setMinutes(options.targetDate.min);
 			targetTime.setSeconds(options.targetDate.sec);
