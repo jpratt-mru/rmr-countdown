@@ -1,5 +1,5 @@
 /*!
- * jQuery Countdown plugin v0.9.5
+ * jQuery Countdown plugin v1.0
  * http://www.littlewebthings.com/projects/countdown/
  *
  * Copyright 2010, Vassilis Dourdounis
@@ -31,11 +31,7 @@
 		$.extend(config, options);
 
 		diffSecs = this.setCountDown(config);
-		console.info(diffSecs);
-
-		$('#' + $(this).attr('id') + ' .digit').html('<div class="top"></div><div class="bottom"></div>');
-		$(this).doCountDown($(this).attr('id'), diffSecs, 500);
-
+	
 		if (config.onComplete)
 		{
 			$.data($(this)[0], 'callback', config.onComplete);
@@ -44,6 +40,10 @@
 		{
 			$.data($(this)[0], 'omitWeeks', config.omitWeeks);
 		}
+
+		$('#' + $(this).attr('id') + ' .digit').html('<div class="top"></div><div class="bottom"></div>');
+		$(this).doCountDown($(this).attr('id'), diffSecs, 500);
+
 		return this;
 
 	};
@@ -61,18 +61,13 @@
 
 		if (options.targetDate)
 		{
-			targetTime.setFullYear(options.targetDate.year);
-			targetTime.setMonth(options.targetDate.month-1);
-			targetTime.setDate(options.targetDate.day);
-			targetTime.setHours(options.targetDate.hour);
-			targetTime.setMinutes(options.targetDate.min);
-			targetTime.setSeconds(options.targetDate.sec);
+			targetTime = new Date(options.targetDate.month + '/' + options.targetDate.day + '/' + options.targetDate.year + ' ' + options.targetDate.hour + ':' + options.targetDate.min + ':' + options.targetDate.sec + (options.targetDate.utc ? ' UTC' : ''));
 		}
 		else if (options.targetOffset)
 		{
-			targetTime.setDate(options.targetOffset.day + targetTime.getDate());
-			targetTime.setMonth(options.targetOffset.month + targetTime.getMonth());
 			targetTime.setFullYear(options.targetOffset.year + targetTime.getFullYear());
+			targetTime.setMonth(options.targetOffset.month + targetTime.getMonth());
+			targetTime.setDate(options.targetOffset.day + targetTime.getDate());
 			targetTime.setHours(options.targetOffset.hour + targetTime.getHours());
 			targetTime.setMinutes(options.targetOffset.min + targetTime.getMinutes());
 			targetTime.setSeconds(options.targetOffset.sec + targetTime.getSeconds());
@@ -133,15 +128,14 @@
 	};
 
 	$.fn.dashChangeTo = function(id, dash, n, duration) {
-		$this = $('#' + id);
-		d2 = n%10;
-		d1 = (n - n%10) / 10
-
-		if ($('#' + $this.attr('id') + ' .' + dash))
-		{
-			$this.digitChangeTo('#' + $this.attr('id') + ' .' + dash + ' .digit:first', d1, duration);
-			$this.digitChangeTo('#' + $this.attr('id') + ' .' + dash + ' .digit:last', d2, duration);
-		}
+		  $this = $('#' + id);
+		 
+		  for (var i=($this.find('.' + dash + ' .digit').length-1); i>=0; i--)
+		  {
+				var d = n%10;
+				n = (n - d) / 10;
+				$this.digitChangeTo('#' + $this.attr('id') + ' .' + dash + ' .digit:eq('+i+')', d, duration);
+		  }
 	};
 
 	$.fn.digitChangeTo = function (digit, n, duration) {
@@ -152,19 +146,9 @@
 		if ($(digit + ' div.top').html() != n + '')
 		{
 
-			$(digit + ' div.top').css({'display': 'none'});
+			$(digit + ' div.top').css({'display': 'block'});
 			$(digit + ' div.top').html((n ? n : '0')).slideDown(duration);
-
-			$(digit + ' div.bottom').animate({'height': ''}, duration, function() {
-				$(digit + ' div.bottom').html($(digit + ' div.top').html());
-				$(digit + ' div.bottom').css({'display': 'block', 'height': ''});
-				$(digit + ' div.top').hide().slideUp(10);
-
-			
-			});
 		}
 	};
 
 })(jQuery);
-
-
