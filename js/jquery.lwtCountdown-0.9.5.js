@@ -31,6 +31,7 @@
 		$.extend(config, options);
 
 		diffSecs = this.setCountDown(config);
+		console.info(diffSecs);
 
 		$('#' + $(this).attr('id') + ' .digit').html('<div class="top"></div><div class="bottom"></div>');
 		$(this).doCountDown($(this).attr('id'), diffSecs, 500);
