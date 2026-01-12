@@ -23,7 +23,8 @@ h1 {
 h2.subtitle {
 	margin-top: 20px;
 	margin-bottom: 40px;
-	font-size: 15pt;
+	font-size: 26pt;
+	color: orange;
 }
 
 #container {
